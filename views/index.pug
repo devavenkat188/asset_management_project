@@ -1,0 +1,162 @@
+doctype html
+head
+  meta(charset='utf-8')
+  meta(http-equiv='X-UA-Compatible' content='IE=edge')
+  meta(name='viewport' content='width=device-width, initial-scale=1, shrink-to-fit=no')
+  meta(name='description' content='')
+  meta(name='author' content='')
+  title Dashboard - SB Admin
+  link(href='https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css' rel='stylesheet')
+  link(href='/styles.css' rel='stylesheet')
+  script(src='https://use.fontawesome.com/releases/v6.3.0/js/all.js' crossorigin='anonymous')
+nav.sb-topnav.navbar.navbar-expand.navbar-dark.bg-dark
+  // Navbar Brand
+  a#top-nav.navbar-brand.ps-3(href='/chart/emp') KTT Asset
+  // Sidebar Toggle
+  button#sidebarToggle.btn.btn-link.btn-sm.order-1.order-lg-0.me-4.me-lg-0(href='#!')
+    i#fas-sidebtn.fas.fa-bars
+  // Navbar Search
+  form.d-none.d-md-inline-block.form-inline.ms-auto.me-0.me-md-3.my-2.my-md-0
+    .input-group
+      input.form-control(type='text' placeholder='Search for...' aria-label='Search for...' aria-describedby='btnNavbarSearch')
+      button#btnNavbarSearch.btn.btn-primary(type='button')
+        i.fas.fa-search
+  // Navbar
+  ul.navbar-nav.ms-auto.ms-md-0.me-3.me-lg-4
+    li.nav-item.dropdown
+      a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='true')
+        i.fas.fa-user.fa-fw
+      ul.dropdown-menu.dropdown-menu-end(aria-labelledby='navbarDropdown')
+        li
+          a.dropdown-item(href='#!') Settings
+        // <li><a class="dropdown-item" href="#!">Activity Log</a></li>
+        li
+          hr.dropdown-divider
+        li
+          a#logout.dropdown-item(type='logout' href='/logout') Logout
+#layoutSidenav
+  #layoutSidenav_nav
+    nav#sidenavAccordion.sb-sidenav.accordion.sb-sidenav-dark
+      .sb-sidenav-menu
+        .nav
+          // <div class="sb-sidenav-menu-heading">Addons</div>
+          a.nav-link(href='/createlogin')
+            #dashboard.sb-nav-link-icon
+              i.fas.fa-book-open
+            |                                 Login
+          a.nav-link(href='/createregister')
+            #dashboard.sb-nav-link-icon
+              i.fas.fa-book-open
+            |                                 Register
+          a.nav-link(href='/chart/emp')
+            #dashboard.sb-nav-link-icon
+              i.fas.fa-tachometer-alt
+            |                                 Dashboard
+          a.nav-link(href='/employee')
+            #emp.sb-nav-link-icon
+              i.fas.fa-table
+            |                                 Employee Master
+          a.nav-link(href='/asset')
+            #asset.sb-nav-link-icon
+              i.fas.fa-table
+            |                                 Asset Master
+          a.nav-link(href='/createcategory')
+            #category.sb-nav-link-icon
+              i.fas.fa-table
+            |                                 Asset Category Master
+          a.nav-link(href='/createhistory')
+            #history.sb-nav-link-icon
+              i.fas.fa-table
+            |                                 Asset History
+          //
+            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+            <nav class="sb-sidenav-menu-nested nav">
+            <a class="nav-link" href="/createlogin">Login</a>
+            <a class="nav-link" href="/createregister">Register</a>
+            </nav>
+            </div>
+          // Pages
+          //
+            <a class="nav-link collapsed" href="/createregister" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
+            <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
+            Pages
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="collapsePages" aria-labelledby="headingTwo" data-bs-parent="#sidenavAccordion">
+            <nav class="sb-sidenav-menu-nested nav accordion" id="sidenavAccordionPages">
+            <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#pagesCollapseAuth" aria-expanded="false" aria-controls="pagesCollapseAuth">
+            Authentication
+            <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
+            </a>
+            <div class="collapse" id="pagesCollapseAuth" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">
+            <nav class="sb-sidenav-menu-nested nav">
+            <a class="nav-link" href="/createlogin">Login</a>
+            <a class="nav-link" href="/createregister">Register</a>
+            </nav>
+            </div>
+            </nav>
+            </div>
+      .sb-sidenav-footer
+        .small Logged in as:
+        |                         KTT Admin
+  #layoutSidenav_content
+    main
+      //
+        <div class="container-fluid px-4">
+        <h1 class="mt-4">Dashboard</h1>
+        <ol class="breadcrumb mb-4">
+        <li class="breadcrumb-item active">Dashboard</li>
+        </ol>
+        </div>
+        <div class="container-fluid px-4">
+        <h1 class="mt-4">Charts</h1>
+        <div class="card mb-4">
+        <div class="row">
+        <div class="col-lg-6">
+        <div class="card mb-4">
+        <div class="card-header">
+        <i class="fas fa-chart-bar me-1"></i>
+        Bar Chart Example
+        </div>
+        <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
+        </div>
+        </div>
+        <div class="col-lg-6">
+        <div class="card mb-4">
+        <div class="card-header">
+        <i class="fas fa-chart-pie me-1"></i>
+        Pie Chart Example
+        </div>
+        <canvas id="Chart" style="width:100%;max-width:700px"></canvas>
+        </div>
+        </div>
+        </div>
+        </div>
+    footer.py-4.bg-light.mt-auto
+      .container-fluid.px-4
+        .d-flex.align-items-center.justify-content-between.small
+          .text-muted Copyright &copy; Your Website 2023
+          div
+            a(href='#') Privacy Policy
+            |                                 &middot;
+            a(href='#') Terms &amp; Conditions
+//- script(src='https://cdn.jsdelivr.net/npm/chart.js')
+//- script(src='https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels')
+script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js' crossorigin='anonymous')
+//- script(src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js')
+script(src='/scripts.js')
+script(src='/employee.js')
+script(src='/assetmaster.js')
+script(src='/register.js')
+script(src='/login.js')
+script(src='/chart.js')
+script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js')
+script(src='https://code.jquery.com/jquery-3.6.0.min.js')
+script(src='https://code.jquery.com/jquery-3.7.1.js')
+script(src='https://cdn.datatables.net/2.0.2/js/dataTables.js')
+script(src='https://cdn.datatables.net/v/bs5/dt-2.0.1/datatables.min.js')
+// <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+// <script src="assets/demo/chart-area-demo.js"></script>
+// <script src="assets/demo/chart-bar-demo.js"></script>
+// <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+script(src='/datatables-simple-demo.js')
